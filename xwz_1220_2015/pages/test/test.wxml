@@ -1,0 +1,11 @@
+pages/test/test.wxml-->
+<!-- <view>用户详细信息</view>
+  <input class="input" name="userName" placeholder="请输入用户名"
+  bindinput="userNameInput"/>
+  <button class="resetBtn" bindtap="resetBtnClick" style = "background:{{color}}" disabled = "{{disabled}}"  >发布</button> -->
+
+<view wx:for = "{{publish_info}}" id='{{f_ind}}' bindtap = 'detail_info' wx:for-index="f_ind" wx:for-item="f_item">
+  <view>{{f_item.name}}</view>
+</view>
+
+

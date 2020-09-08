@@ -1,0 +1,17 @@
+<!--pages/my_info/system_notice/system_notice'.wxml-->
+
+<view wx:for="{{notices['system']}}" id="{{index}}">
+  <view class="message">
+    <van-row>
+      <van-col span="4"><image src="../../image/logo.png" style="width:50px;height:50px;"></image></van-col>
+      <van-col span="20">
+        <van-row>
+          <van-col><view class="info-from">云麓hei市</view></van-col>
+          <van-col class="time"><view>{{item.time}}</view></van-col>
+        </van-row>
+        <van-row><view class="content">{{item.text}}</view></van-row>
+      </van-col>
+    </van-row>
+  </view>
+  <view class="divLine"></view>
+</view>

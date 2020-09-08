@@ -1,0 +1,98 @@
+<!--pages/my/myrank/myrank.wxml-->
+<view class="my-credit">
+  <image style="width:100%;height:200rpx;" mode='aspectFill' src='../../image/myheishi.jpg'></image>
+</view>
+<!--分割线-->
+<view class="my_divLine"></view>
+<view style="padding:15px;">
+  <van-row>
+    <van-col><van-icon style="font-size:40rpx" name="smile"/></van-col>
+    <van-col><view style="font-size:32rpx">当前信用等级</view></van-col>
+  </van-row>
+  <!--颜色根据信用分等级来定-->
+  <view class="format" wx:if="{{rank==1}}" style="color:#8a8a8a;">信用极差 Lv.1</view>
+  <view class="format" wx:if="{{rank==2}}" style="color:#7cba59;">信用较差 Lv.2</view>
+  <view class="format" wx:if="{{rank==3}}" style="color:#3f81c1;">信用一般 Lv.3</view>
+  <view class="format" wx:if="{{rank==4}}" style="color:#82529d;">信用较好 Lv.4</view>
+  <view class="format" wx:if="{{rank==5}}" style="color:#e2ab53;">信用极好 Lv.5</view>
+  <view class="format" style="color:red;">当前hei市信用分：70</view>
+</view>
+
+<!--分割线-->
+<view class="my_divLine1"></view>
+<view style="padding:15px;">
+  <van-row>
+    <van-col><van-icon style="font-size:40rpx" name="like"/></van-col>
+    <van-col><view style="font-size:32rpx">hei市信用分计算规则</view></van-col>
+  </van-row>
+  <view style="font-size:25rpx;color:gray;">
+    <view>1.hei市信用满分为100分，初始信用分为70分。</view>
+    <view>2.hei市信用分以7天为一个周期进行结算，每周一更新。</view>
+    <view>3.hei市信用将通过多个维度综合考虑云麓hei市用户的信用：</view>
+    <view>（1）根据用户发布的贴子的频率，发布的内容量综合考量；</view>
+    <view>（2）根据用户在云麓hei市的活跃度综合考量，例如浏览、评论以及私信等操作都有可能提升hei市信用；</view>
+    <view>（3）根据用户在云麓hei市的影响力综合考量；</view>
+    <view>（4）根据用户在云麓hei市的帖子扩散程度综合考量。</view>
+    <view style="font-weight:bolder;"> 注意：</view>
+    <view>（1）若发布信息涉及不良因素或被其他用户举报成功将扣除大量信用分，若信用分不足40分将不能再进行信息发布；</view>
+    <view>（2）长时间不登陆云麓hei市将会扣除一定的信用分，但不会低于70分。</view>
+  </view>
+</view>
+
+<!--分割线-->
+<view class="my_divLine1"></view>
+<view style="padding:15px;">
+  <van-row>
+    <van-col><van-icon style="font-size:40rpx" name="diamond"/></van-col>
+    <van-col><view style="font-size:32rpx">hei市信用分区间及颜色</view></van-col>
+  </van-row>
+
+    <view class="table">
+      <view class="tr">
+          <view class="th th1">信用分范围</view>
+          <view class="th th2">信用程度</view>
+          <view class="th th3">信用等级颜色</view>
+      </view>
+      <view class="tr" wx:if="{{1}}">  
+        <view class="td td1">90~100</view>
+        <view class="td td2">信用极好</view>
+        <view class="td td3">
+          <van-col span="7"><view style="display:flex;flex-direction:row;justify-content:flex-end;">Lv.5</view></van-col>
+          <van-col span="17"><view class="rank-1"></view></van-col>
+        </view>
+      </view>
+      <view class="tr" wx:if="{{2}}">
+        <view class="td td1">80~89</view>
+        <view class="td td2">信用较好</view>
+        <view class="td td3">
+          <van-col span="7"><view style="display:flex;flex-direction:row;justify-content:flex-end;">Lv.4</view></van-col>
+          <van-col span="17"><view class="rank-2"></view></van-col>
+        </view>       
+      </view>
+      <view class="tr" wx:if="{{3}}">
+        <view class="td td1">60~79</view>
+        <view class="td td2">信用一般</view>
+        <view class="td td3">
+          <van-col span="7"><view style="display:flex;flex-direction:row;justify-content:flex-end;">Lv.3</view></van-col>
+          <van-col span="17"><view class="rank-3"></view></van-col>
+        </view>       
+      </view>
+      <view class="tr" wx:if="{{4}}">
+        <view class="td td1">40~59</view>
+        <view class="td td2">信用较差</view>
+        <view class="td td3">
+          <van-col span="7"><view style="display:flex;flex-direction:row;justify-content:flex-end;">Lv.2</view></van-col>
+          <van-col span="17"><view class="rank-4"></view></van-col>
+        </view>       
+      </view>
+      <view class="tr" wx:if="{{5}}">
+        <view class="td td1">0~39</view>
+        <view class="td td2">信用极差</view>
+        <view class="td td3">
+          <van-col span="7"><view style="display:flex;flex-direction:row;justify-content:flex-end;">Lv.1</view></van-col>
+          <van-col span="17"><view class="rank-5"></view></van-col>
+        </view>       
+      </view>
+    </view>
+
+</view>

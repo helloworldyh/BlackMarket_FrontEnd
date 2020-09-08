@@ -1,0 +1,291 @@
+<!--pages/other_info/other_info.wxml-->
+<van-row gutter="10" bindtap='my_info'>
+    <van-col span="6"> 
+      <image src = "{{other_info.avatarUrl}}" class='my-avatar' mode='cover'></image>
+    </van-col>
+    <van-col span="10">
+      <van-row><view class="my-nickname">{{other_info.nickname}}</view></van-row>
+      <view class="format" wx:if="{{rank==1}}" style="color:#8a8a8a;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用极差 Lv.1</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==2}}" style="color:#7cba59;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用较差 Lv.2</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==3}}" style="color:#3f81c1;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用一般 Lv.3</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==4}}" style="color:#82529d;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用较好 Lv.4</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==5}}" style="color:#e2ab53;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用极好 Lv.5</view>
+        </van-col></van-row>
+      </view>
+    </van-col>
+    <van-col span="8">
+      <view class="my_information" bindtap = 'gotoprivatechat'><van-icon name="chat-o" size='60rpx'/><view style="padding:5px;">私信</view></view>
+    </van-col>
+  </van-row>
+
+    <!--分割线-->
+    <view class="divLine1"></view>
+
+  <van-tabs>
+    <van-tab title="全部" name="a"><!--他的全部信息开始-->
+      <view class="message-box">
+      <!--分割线-->
+       <view class="divLine1"></view>
+        <view wx:for = "{{other_publish_info}}" id='{{index}}' bindtap = 'detail_info'>
+          <view class="one-message"><!--one-message代表一条信息-->
+            <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+            <van-row gutter="10"><view class='userinfo-information'>
+              <!--userinfo-avatar代表头像-->
+              <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+
+              <van-col span="13">
+                <!--serinfo-nickname代表昵称-->
+                <van-row><view class='userinfo-nickname'>{{item.nickname}}</view></van-row>
+                <!--userinfo-span_time代表发布时间-->
+                <van-row><view class='userinfo-span_time'>{{item.time}}</view></van-row>
+              </van-col>
+
+              <!--userinfo-class代表出售or求购-->   
+              <van-col span="4">
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
+                  <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='求购'}}">
+                  <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+              </van-col> 
+              <!-- 状态 -->
+              <van-col span="4">
+                <view wx:if="{{item.state==1}}" style="color:#808080;font-size:28rpx;" class="state">已过期</view>
+                <view wx:if="{{item.state==0}}" style="color:#FF4500;font-size:28rpx;" class="state">未完成</view>
+                <view wx:if="{{item.state==2}}" style="color:#32CD32;font-size:28rpx;" class="state">已完成</view>
+              </van-col>
+            </view></van-row>
+            <van-row gutter="10">          
+              <!--************左边是文字板块************--> 
+              <van-col span="16">
+                <!--userinfo-description代表发布的标题--> 
+                <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
+                <!--desc代表发布的详情--> 
+                <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+                <!--userinfo-price代表发布的价格-->
+                <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>          
+                <!--message-info代表评论数，收藏量，浏览量的板块-->
+                <van-row gutter="10" style="padding-top:10px">            
+                  <van-col span="8">
+                    <!--评论图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="comment-o"/></van-col>
+                    <!--评论数-->
+                    <van-col><view class='the_number'>{{item.comment_ids}}</view></van-col>
+                  </van-col>
+                  <van-col span="8">
+                    <!--收藏图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="star-o"/></van-col>
+                    <!--收藏数-->
+                    <van-col><view class='the_number'>{{item.star_ids}}</view></van-col>
+                  </van-col>              
+                  <van-col span="8">
+                    <!--浏览图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="eye-o"/></van-col>
+                    <!--浏览量-->
+                    <van-col><view class='the_number'>{{item.page_view}}</view></van-col>
+                  </van-col>     
+                </van-row>
+              </van-col>
+              <!--************右边是图片板块************--> 
+              <van-col span="8">
+                <view class='userinfo-picture'>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                </view>
+              </van-col>
+            </van-row>
+          </view>
+          <!--分割线-->
+          <view class="divLine1"></view>
+        </view>
+      </view>
+    </van-tab><!--他的全部信息结束-->
+
+    <van-tab title="出售" name="b"><!--他的出售信息开始-->
+      <view class="message-box">
+        <!--分割线-->
+        <view class="divLine1"></view>
+        <view wx:for = "{{other_publish_info}}" id='{{index}}' bindtap = 'detail_info'>
+          <view class="one-message" wx:if="{{item.buy_sell=='出售'}}"><!--one-message代表一条信息-->
+            <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+            <van-row gutter="10"><view class='userinfo-information'>
+              <!--userinfo-avatar代表头像-->
+              <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+              <van-col span="13">
+                <!--serinfo-nickname代表昵称-->
+                <van-row><view class='userinfo-nickname'>{{item.nickname}}</view></van-row>
+                <!--userinfo-span_time代表发布时间-->
+                <van-row><view class='userinfo-span_time'>{{item.time}}</view></van-row>
+              </van-col>
+              <!--userinfo-class代表出售or求购-->   
+              <van-col span="4">
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
+                  <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='求购'}}">
+                  <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+              </van-col> 
+              <!-- 状态 -->
+              <van-col span="4">
+                <view wx:if="{{item.state==1}}" style="color:#808080;font-size:28rpx;" class="state">已过期</view>
+                <view wx:if="{{item.state==0}}" style="color:#FF4500;font-size:28rpx;" class="state">未完成</view>
+                <view wx:if="{{item.state==2}}" style="color:#32CD32;font-size:28rpx;" class="state">已完成</view>
+              </van-col>
+            </view></van-row>
+            <van-row gutter="10">          
+              <!--************左边是文字板块************--> 
+              <van-col span="16">
+                <!--userinfo-description代表发布的标题--> 
+                <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
+                <!--desc代表发布的详情--> 
+                <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+                <!--userinfo-price代表发布的价格-->
+                <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>          
+                <!--message-info代表评论数，收藏量，浏览量的板块-->
+                <van-row gutter="10" style="padding-top:10px">            
+                  <van-col span="8">
+                    <!--评论图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="comment-o"/></van-col>
+                    <!--评论数-->
+                    <van-col><view class='the_number'>{{item.comment_ids}}</view></van-col>
+                  </van-col>
+                  <van-col span="8">
+                    <!--收藏图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="star-o"/></van-col>
+                    <!--收藏数-->
+                    <van-col><view class='the_number'>{{item.star_ids}}</view></van-col>
+                  </van-col>              
+                  <van-col span="8">
+                    <!--浏览图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="eye-o"/></van-col>
+                    <!--浏览量-->
+                    <van-col><view class='the_number'>{{item.page_view}}</view></van-col>
+                  </van-col>     
+                </van-row>
+              </van-col>
+              <!--************右边是图片板块************--> 
+              <van-col span="8">
+                <view class='userinfo-picture'>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                </view>
+              </van-col>
+            </van-row>
+          </view>
+          <!--分割线-->
+          <view wx:if="{{item.buy_sell=='出售'}}"><view class="divLine1"></view></view>
+        </view>
+      </view>
+    </van-tab><!--他的出售信息结束-->
+
+      <van-tab title="求购" name="c"><!--他的求购信息开始-->
+      <view class="message-box">
+        <!--分割线-->
+        <view class="divLine1"></view>
+        <view wx:for = "{{other_publish_info}}" id='{{index}}' bindtap = 'detail_info'>
+          <view class="one-message" wx:if="{{item.buy_sell=='求购'}}"><!--one-message代表一条信息-->
+            <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+            <van-row gutter="10"><view class='userinfo-information'>
+              <!--userinfo-avatar代表头像-->
+              <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+              <van-col span="13">
+                <!--serinfo-nickname代表昵称-->
+                <van-row><view class='userinfo-nickname'>{{item.nickname}}</view></van-row>
+                <!--userinfo-span_time代表发布时间-->
+                <van-row><view class='userinfo-span_time'>{{item.time}}</view></van-row>
+              </van-col>
+              <!--userinfo-class代表出售or求购-->   
+              <van-col span="4">
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
+                  <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+                <view class='userinfo-class' wx:if="{{item.buy_sell=='求购'}}">
+                  <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+                </view>
+              </van-col> 
+              <!-- 状态 -->
+              <van-col span="4">
+                <view wx:if="{{item.state==1}}" style="color:#808080;font-size:28rpx;" class="state">已过期</view>
+                <view wx:if="{{item.state==0}}" style="color:#FF4500;font-size:28rpx;" class="state">未完成</view>
+                <view wx:if="{{item.state==2}}" style="color:#32CD32;font-size:28rpx;" class="state">已完成</view>
+              </van-col>
+            </view></van-row>
+            <van-row gutter="10">          
+              <!--************左边是文字板块************--> 
+              <van-col span="16">
+                <!--userinfo-description代表发布的标题--> 
+                <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
+                <!--desc代表发布的详情--> 
+                <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+                <!--userinfo-price代表发布的价格-->
+                <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>          
+                <!--message-info代表评论数，收藏量，浏览量的板块-->
+                <van-row gutter="10" style="padding-top:10px">            
+                  <van-col span="8">
+                    <!--评论图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="comment-o"/></van-col>
+                    <!--评论数-->
+                    <van-col><view class='the_number'>{{item.comment_ids}}</view></van-col>
+                  </van-col>
+                  <van-col span="8">
+                    <!--收藏图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="star-o"/></van-col>
+                    <!--收藏数-->
+                    <van-col><view class='the_number'>{{item.star_ids}}</view></van-col>
+                  </van-col>              
+                  <van-col span="8">
+                    <!--浏览图标-->
+                    <van-col><van-icon style="font-size:35rpx" name="eye-o"/></van-col>
+                    <!--浏览量-->
+                    <van-col><view class='the_number'>{{item.page_view}}</view></van-col>
+                  </van-col>     
+                </van-row>
+              </van-col>
+              <!--************右边是图片板块************--> 
+              <van-col span="8">
+                <view class='userinfo-picture'>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                </view>
+              </van-col>
+            </van-row>
+          </view>
+          <!--分割线-->
+          <view wx:if="{{item.buy_sell=='求购'}}"><view class="divLine1"></view></view>
+        </view>
+      </view>
+      </van-tab><!--他的求购信息结束-->
+
+      </van-tabs>

@@ -1,0 +1,138 @@
+/* pages/test/test.wxss */
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1;
+}
+
+/*整条信息*/
+.message{
+  margin-top:5rpx;
+  background-color:white;   
+  padding: 15px; 
+}
+
+/*发布者信息栏*/
+.userinformation{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*发布者头像*/
+.userinfo-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  margin: auto;
+  border-radius: 50%;  
+}
+
+/*发布者昵称*/
+.userinfo-nickname {
+  color: rgb(243, 199, 54);
+  margin: auto; 
+  font-size: 35rpx;
+  flex-direction: row;
+  align-items: left;
+  
+}
+
+/*发布时间*/
+.userinfo-span_time{
+  color: #aaa;
+  font-size: 30rpx;
+  margin:auto;
+  flex-direction: row;
+  align-items: right;
+}
+
+/*发布类别：求购 or 出售*/
+.userinfo-class{
+  color: rgb(170, 170, 170);
+  font-size: 30rpx;
+  margin:auto;
+  margin-left:39rpx;
+  
+}
+
+/*发布物品标题*/
+.userinfo-description{
+  margin-top:5rpx;
+  font-size: 15px;
+  color: #000000;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Patrick Hand SC';
+  src: "BASE64";
+  font-weight:  bold;
+  font-style: normal;
+}
+
+/*发布物品的价格*/
+.userinfo-price{
+  margin-top:5rpx;
+  font-size: 35rpx;
+  color: #FF0000;
+}
+
+/*发布物品的图片*/
+.userinfo-picture{
+  width:215rpx;
+  height: 215rpx;
+  flex-direction: row;
+  align-items: right;
+  border-width: 2rpx;
+  border-color:red;
+}
+
+/*本条信息的评论，收藏，浏览*/
+.message-info{
+  margin:auto;
+  margin-top:5rpx;
+}
+
+/*发布信息的评论数*/
+.userinfo-comment{
+  color: #aaa;
+  font-size: 30rpx;
+}
+
+/*发布的物品有几人想要*/
+.userinfo-want{
+  color: #aaa;
+  font-size: 30rpx;
+}
+
+/*这条信息的浏览量*/
+.userinfo-see{
+  color: #aaa;
+  font-size: 30rpx;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+/*发布物品的详情*/
+.desc {
+  margin-top:5rpx;
+  /*定义为自适应布局*/
+  display: -webkit-box;
+  word-break: break-all;
+   /*超出文字用省略号代替*/
+  text-overflow: ellipsis; 
+  /*竖直方向的超出和隐藏*/
+  -webkit-box-orient: vertical;
+  /*设定行数为2*/
+  -webkit-line-clamp: 2;
+  /*多出部分隐藏*/
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #aaa;
+  height:75rpx;
+  
+  text-align:justify;
+}
+

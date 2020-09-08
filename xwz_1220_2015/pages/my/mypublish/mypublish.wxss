@@ -1,0 +1,122 @@
+/*顶部搜索框、消息滚动框、分类框*/
+.top{
+  width:100%;
+  position:fixed;
+  top:0;
+  z-index: 2;
+}
+
+/*信息框*/
+.frame{
+  width:100%;
+  margin-top:44px;
+  z-index:1;
+}
+
+/*内部分割线样式*/
+.divLine1{ 
+  background:rgb(222, 222, 222);
+  height:1px;
+}
+
+/*单条信息*/
+.one-message{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/*发布者头像*/
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: auto;
+  border-radius: 50%;  
+}
+
+/*发布者昵称*/
+.userinfo-nickname {
+  margin-left:5px;
+  color: rgb(243, 199, 54);
+  font-size: 30rpx; 
+}
+
+/*发布时间*/
+.userinfo-span_time{
+  margin-left:5px;
+  color: #aaa;
+  font-size: 25rpx;
+}
+
+/*发布类别：求购 or 出售*/
+.userinfo-class{
+  color: rgb(170, 170, 170);
+  font-size: 28rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+}
+/*发布者信息栏*/
+.userinformation{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*发布物品标题*/
+.userinfo-description{
+  margin-top:3px;
+  font-size: 35rpx;
+  color: black;
+  font-family: 'Patrick Hand SC';
+  src: "BASE64";
+  font-weight:  bold;
+  font-style: normal;
+}
+
+/*发布物品的详情*/
+.desc {
+  margin-top:5rpx;
+  /*定义为自适应布局*/
+  display: -webkit-box;
+  word-break: break-all;
+   /*超出文字用省略号代替*/
+  text-overflow: ellipsis; 
+  /*竖直方向的超出和隐藏*/
+  -webkit-box-orient: vertical;
+  /*设定行数为2*/
+  -webkit-line-clamp: 2;
+  /*多出部分隐藏*/
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #aaa;
+  height:80rpx;
+  text-align:justify;
+}
+
+/*发布物品的价格*/
+.userinfo-price{
+  margin-top:3px;
+  font-size: 35rpx;
+  color: #FF0000;
+}
+
+/*发布物品的图片*/
+.userinfo-picture{
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+}
+
+/*发布信息的评论、收藏、点赞数*/
+.the_number{
+  color: #aaa;
+  font-size: 30rpx;
+}
+
+.state{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-end;
+}

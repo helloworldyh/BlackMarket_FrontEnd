@@ -1,0 +1,117 @@
+<!--顶部固定-->
+<van-tabs class="top"  bind:change = 'all_sell_buy'>
+  <van-tab title="全部" name="a"></van-tab>
+  <van-tab title="出售" name="b"></van-tab>
+  <van-tab title="求购" name="c"></van-tab>
+</van-tabs>  
+
+  <view class='frame'> 
+    <!--分割线-->
+    <view class="divLine1"></view>
+    <view wx:for = "{{collect}}" id='{{index}}' bindtap = 'detail_info' bindlongtap="cancel_star" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" >
+      <view class="one-message"><!--one-message代表一条信息-->
+
+      <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+      <van-row gutter="10"><view class='userinfo-information'>
+
+      <!--userinfo-avatar代表头像-->
+      <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+
+      <van-col span="16">
+        <!--serinfo-nickname代表昵称-->
+        <van-row>
+            <van-col><view class='userinfo-nickname'>{{item.nickname}}</view></van-col>
+            <van-col>
+              <view wx:if="{{item.rank==1}}" class="the_lv">
+                <image mode="aspectFit" src="../../image/LV1.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==2}}">
+                <image mode="aspectFit" src="../../image/LV2.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==3}}" class="the_lv">
+                <image mode="aspectFit" src="../../image/LV3.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==4}}">
+                <image mode="aspectFit" src="../../image/LV4.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==5}}">
+                <image mode="aspectFit" src="../../image/LV5.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+            </van-col>
+          </van-row>
+        <!--userinfo-span_time代表发布时间-->
+        <van-row><view class='userinfo-span_time'>{{item.span_time}}</view></van-row>
+      </van-col>
+
+      <!--userinfo-class代表出售or求购-->   
+      <van-col span="5">
+        <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
+          <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+        </view>
+        <view class='userinfo-class' wx:if="{{item.buy_sell=='求购'}}">
+          <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+        </view>
+      </van-col>
+    </view></van-row>
+
+    <van-row gutter="10">
+    
+      <!--************左边是文字板块************--> 
+      <van-col span="16">
+
+      <!--userinfo-description代表发布的标题--> 
+        <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
+        
+      <!--desc代表发布的详情--> 
+        <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+
+      <!--userinfo-price代表发布的价格-->
+        <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>
+
+     
+      <!--message-info代表评论数，收藏量，浏览量的板块-->
+       <van-row gutter="10" style="padding-top:10px">
+       
+        <van-col span="8">
+          <!--评论图标-->
+          <van-col><van-icon style="font-size:35rpx" name="comment-o"/></van-col>
+          <!--评论数-->
+          <van-col><view class='the_number'>{{item.comment_ids}}</view></van-col>
+        </van-col>
+
+        <van-col span="8">
+          <!--收藏图标-->
+          <van-col><van-icon style="font-size:35rpx" name="star-o"/></van-col>
+          <!--收藏数-->
+          <van-col><view class='the_number'>{{item.star_ids}}</view></van-col>
+        </van-col>
+        
+        <van-col span="8">
+          <!--浏览图标-->
+          <van-col><van-icon style="font-size:35rpx" name="eye-o"/></van-col>
+          <!--浏览量-->
+          <van-col><view class='the_number'>{{item.page_view}}</view></van-col>
+        </van-col>     
+      </van-row>
+
+    </van-col>
+
+    <!--************右边是图片板块************--> 
+    <van-col span="8">
+      <view wx:if="{{item.imgUrl.length>0}}">
+      <view class='userinfo-picture'><image style="width:220rpx;height:220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image></view>
+      </view>
+    </van-col>
+
+  </van-row>
+
+      </view>
+      <!--分割线-->
+      <view class="divLine1"></view>
+    </view>
+  </view>
+
+<view wx:if="{{(collect.length==0)&&ready}}" style="margin-top:200px;display:flex;flex-direction:row;justify-content:center;">
+  <image src="../../image/kong.gif" style="width:40px;height:40px;"></image>
+  <view style="margin-left:5px;display:flex;align-items:center;">您还未收藏的任何相关发布内容哦~</view>  
+</view>

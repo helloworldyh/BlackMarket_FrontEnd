@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/upload/upload",
+    "pages/my/my",
+    "pages/my_info/my_info",
+    "pages/details/details",
+    "pages/floor_comment/floor_comment",
+    "pages/private_chat/private_chat",
+    "pages/other_info/other_info",
+    "pages/my/mypublish/mypublish",
+    "pages/my/mycomment/mycomment",
+    "pages/my/mycollect/mycollect",
+    "pages/my/myrank/myrank",
+    "pages/search_show/search_show",
+    "pages/my_info/reply_notice/reply_notice",
+    "pages/my_info/system_notice/system_notice"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "云麓hei市",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

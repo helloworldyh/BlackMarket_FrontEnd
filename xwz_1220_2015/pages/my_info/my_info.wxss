@@ -1,0 +1,119 @@
+/* pages/my_info/my_info.wxss */
+
+/*整条信息的外框*/
+.userinfo-information{
+  padding:10px;
+  width:100%;
+  height:auto;
+}
+
+/*发布者头像*/
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: auto;
+  border-radius: 50%;  
+}
+
+/*发布者昵称*/
+.userinfo-nickname {
+  margin-left:5px;
+  color: rgb(139, 82, 16);
+  margin: auto; 
+  font-size: 35rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  font-weight: bolder;
+  
+}
+
+/*发布时间*/
+.userinfo-span_time{
+  color: #aaa;
+  font-size: 30rpx;
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  padding-right:20px;
+}
+
+/*发布内容*/
+.userinfo-message{
+  margin-left:5px;
+  color: #aaa;
+  font-size: 30rpx;
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  /*定义为自适应布局*/
+  display: -webkit-box;
+  word-break: break-all;
+   /*超出文字用省略号代替*/
+  text-overflow: ellipsis; 
+  /*竖直方向的超出和隐藏*/
+  -webkit-box-orient: vertical;
+  /*设定行数为2*/
+  -webkit-line-clamp: 1;
+  /*多出部分隐藏*/
+  overflow: hidden;
+}
+
+/*未读消息数*/
+.userinfo-unread{
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  padding-right:20px;
+}
+
+
+/*内部分割线样式*/
+.divLine1{ 
+  margin-top:10px;
+  background: rgb(222, 222, 222);
+  height:1px;
+  margin-left:110rpx;
+}
+
+.level_image{
+  margin:-5px 0px auto 5px;
+  height:25px;
+  width:25px; 
+}
+.notice{
+  width:100%;
+  height:auto;
+  padding:15px 15px 15px 15px;
+}
+
+.notice_image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: auto;
+  border-radius: 50%; 
+}
+
+.notice_text{  
+  padding-left:10px;
+  font-size:30rpx;
+  padding-top:20rpx;
+}
+
+.divLine2{ 
+  background: rgb(222, 222, 222);
+  height:1px;
+}
+
+.info-num{
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  padding-right:30px;
+  font-size:30rpx;
+  padding-top:20rpx;
+}

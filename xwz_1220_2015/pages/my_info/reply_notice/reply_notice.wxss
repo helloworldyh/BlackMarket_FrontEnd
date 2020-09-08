@@ -1,0 +1,38 @@
+/* pages/my_info/reply_notice/reply_notice.wxss */
+/* pages/my_info/system_notice/system_notice'.wxss */
+
+.message{
+  padding:15px;
+}
+
+.info-from{
+  padding-left:5rpx;
+  font-size:30rpx;
+  color:grey;
+}
+
+.content{
+  padding-top:10rpx;
+  font-size:35rpx;
+  font-weight: bolder;
+}
+
+.time{
+  font-size:25rpx;
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  color:grey;
+}
+
+.divLine{ 
+  background: rgb(222, 222, 222);
+  height:1px;
+}
+
+.original{
+  padding-top:10rpx;
+  font-size:30rpx;
+  color:grey;
+}

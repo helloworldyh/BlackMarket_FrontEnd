@@ -1,0 +1,49 @@
+<!--聊天对象-->
+
+
+<scroll-view class='chatPage' scroll-y style='height:{{scrollHeight}}px;'
+     scroll-top="{{scrollTop}}" scroll-into-view="msg{{messages.length}}">
+  <view style="padding-bottom:25px;"> 
+  <block wx:for-items="{{messages}}"  wx:for-index="index" id="msg{{index}}"> 
+   
+    <view class="box"> 
+    
+    <view wx:if="{{!item.isme}}">
+      <view class="other">
+        <van-row wx:if="{{item.view}}"><view class="time">{{item.time}}</view></van-row>
+        <van-row>
+        <view class="other1">
+          <van-col><view style="height:auto;"><image src="{{other_info.avatarUrl}}" class='image'></image></view></van-col>
+          <van-col><view class='text'><label>{{item.message}}</label></view></van-col>
+        </view>
+        </van-row>
+      </view>
+    </view>
+    
+    <view wx:else>
+      <view class="me">
+        <van-row  wx:if="{{item.view}}"><view class="time">{{item.time}}</view></van-row>
+        <van-row>
+          <view class="me1">
+          <van-col><view class='text1'><label>{{item.message}}</label></view></van-col>
+          <van-col><image src="{{my_info.avatarUrl}}" class='image1'></image></van-col>
+          </view>
+        </van-row>
+      </view>
+    </view>
+
+    </view>
+  </block>
+  </view>  
+</scroll-view>
+
+<!--输入框组件-->
+<view class='messageInfo'> 
+  <image src='../image/keyboard.png' class='icon' hidden='{{flag}}'></image>
+   <!--<image src='../image/voice.jpg' class='icon' hidden='{{!flag}}' bindtap='changeShowStatus'></image>-->
+  <textarea class='msg-input' bindfocus='changeScrollvalue' bindinput='onInput'
+  value='{{message}}' show-confirm-bar = "{{false}}" cursor-spacing='17px'></textarea>
+  <button bindtap = 'sendMsg'  type="primary" size="mini" style="background:black;font-size:25rpx;z-index:4;height:50rpx;width:100rpx;margin-right: 15px;margin-left: 5px;">发送</button>
+  <!--<button hidden='{{!flag}}' class='msg-input' bindtap='recordVoice'>按住录音</button>-->
+  <!--<image src='../image/plus.png' class='icon' bindtap='uploadimage'></image>-->
+</view>

@@ -1,0 +1,44 @@
+/* pages/my/my.wxss */
+.my-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin:15px 15px 15px 15px;
+}
+
+.my-nickname{
+  font-size: 35rpx;
+  padding-top:45rpx;
+}
+.my_rank{
+  padding-top:3px;
+  font-size: 30rpx;
+}
+.my_diamond{
+  padding-top:3px;
+  font-size: 35rpx;
+}
+.my_information{
+  color: rgb(140, 140, 141);
+  margin-top: 60rpx;
+  margin-right: 15px;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+}
+.my_divLine1{
+ background:rgba(180, 178, 178, 0.253);
+ width: 100%;
+ height: 2rpx;
+}
+.my_frame{
+  margin-top: 10px;
+  height: 32px;
+  font-size: 35rpx;
+  color: rgb(65, 64, 64);
+}
+.my_divLine2{
+ background:rgba(180, 178, 178, 0.253);
+ width: 100%;
+ height: 10px;
+}

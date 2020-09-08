@@ -1,0 +1,263 @@
+<!--pages/Details/Details.wxml-->
+<!--详情页面-->
+<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取权限</button>
+
+<view wx:else>
+  <!--headline为本条发布信息的标题行-->
+  <scroll-view scroll-y="true" style="height:1500rpx;" scroll-into-view="{{id}}">
+  <view id='ID0' >
+  <!--frame代表外框-->
+      <view class='frame' bindtap = 'publish_detail'>
+        <van-row gutter="10">
+          <van-col span="18">
+          <!--my-avatar代表我的头像-->
+            <van-col span="5">
+              <image bindtap='to_page'src = "{{product_info.image}}" class='my-avatar' mode = 'cover'></image>
+            </van-col>
+            <!--nickname代表我的昵称，my-span_time代表发布时间-->
+            <van-col span="19">
+              <van-row>
+                <van-col><view class='my-nickname'>{{product_info.nickname}}</view></van-col>
+                <van-col>
+                  <view wx:if="{{product_info.rank==1}}" class="the_lv">
+                    <image mode="aspectFit" src="../image/LV1.png" style="width:100rpx;height:40rpx;"></image>
+                  </view>
+                  <view wx:if="{{product_info.rank==2}}">
+                    <image mode="aspectFit" src="../image/LV2.png" style="width:100rpx;height:40rpx;"></image>
+                  </view>
+                  <view wx:if="{{product_info.rank==3}}" class="the_lv">
+                    <image mode="aspectFit" src="../image/LV3.png" style="width:100rpx;height:40rpx;"></image>
+                  </view>
+                  <view wx:if="{{product_info.rank==4}}">
+                    <image mode="aspectFit" src="../image/LV4.png" style="width:100rpx;height:40rpx;"></image>
+                  </view>
+                  <view wx:if="{{product_info.rank==5}}">
+                    <image mode="aspectFit" src="../image/LV5.png" style="width:90rpx;height:40rpx;"></image>
+                  </view>
+                </van-col>
+              </van-row>
+              <van-row>
+                <view class='my-span_time'>{{product_info.pub_time}}</view>
+              </van-row>
+            </van-col>     
+          </van-col>
+          <!--my-pageview代表浏览量-->
+          <van-col span="6">   
+            <view class="my-pageview">浏览量：{{product_info.page_view}}</view>
+          </van-col>
+        </van-row>
+
+        <van-row>
+          <van-col><view class='my-buy_sell'>#{{product_info.buy_sell}}#</view> </van-col>
+          <van-col><view class='my-title'>{{product_info.title}}</view></van-col> 
+        </van-row> 
+  
+        <!--my-description代表发布的详情--> 
+        <view class='my-description'>{{product_info.description}}</view>
+        <!--my-price代表发布的价格-->
+        <view class='my-price'>¥{{product_info.price}}</view>
+        <!--************图片板块************--> 
+        <image src="{{product_info.imgUrl}}" mode="widthFix" class='my-picture' bindtap = "previewImg"></image>
+      </view>
+  
+  <!--图片与评论的分割线-->
+  <view class="divLine"></view>
+  </view>
+  <!--评论信息板块-->
+
+    <view class="message" id='ID1' >
+        <view class="comment_headline">
+          <van-row>
+            <van-col span="6"><text>{{product_info.comment_ids}}条回帖</text></van-col>      
+            <!-- <van-col offset="11" span="1"><van-icon name="tosend"/></van-col>      
+            <van-col span="6"><text>默认排序</text></van-col> -->
+          </van-row>
+        </view>
+        <!-- <view>0:等级 {{c_item[0]}}
+                  1：评论者的openid {{c_item[1]}}
+                  2：评论者的头像 {{c_item[2]}}
+                  3：评论者的昵称 {{c_item[3]}}
+                  4：回复者的openid {{c_item[4]}}
+                  5：回复者的头像 {{c_item[5]}}
+                  6：回复者的昵称 {{c_item[6]}}
+                  7：评论的内容 {{c_item[7]}}
+                  8：评论者L1 {{c_item[8]}}
+                  9：回复者c2 {{c_item[9]}}
+                  10：时间 {{c_item[10]}}
+                  11：唯一id</view>-->
+
+        <view wx:for = "{{floor_comment}}" wx:for-index="f_ind" wx:for-item="f_item" id = "{{f_ind}}" bindlongtap="delete_comment" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" >
+          <view wx:for = "{{floor_comment[f_ind]}}" bindtap = 'comment' wx:for-index="c_ind" wx:for-item="c_item">
+              <view wx:if="{{c_ind==0}}" >
+                    <view class="divLine1"></view>
+                    <van-row bindtap = "to_comment_info" id = "{{f_ind}}">
+                      <van-col span="3"><image class='TypeImage1' src='{{c_item[2]}}'></image></van-col>
+                      <van-col span="21">
+                        <van-row>
+                          <van-col class="visitor">{{c_item[3]}}</van-col>
+                          <van-col>
+                            <view wx:if="{{c_item[8]==1}}" class="owner">
+                              <van-tag round type="success">
+                              楼主
+                              </van-tag>
+                            </view>
+                          </van-col>
+                        </van-row>
+                        <van-row>
+                          <van-col class="visitor_time">{{c_item[10]}}</van-col>              
+                          <van-col><view class="visitor_layer">{{f_ind_floor[f_ind]}}楼</view></van-col>
+                        </van-row>
+                      </van-col>
+                    </van-row>
+                    <van-row  bindtap = 'floor' id = "{{f_ind}}">
+                        <van-col offset="3">
+                          <view  style='margin-top:25rpx;margin-bottom:10rpx;' class="visitor_comment">
+                          {{c_item[7]}}
+                          </view>
+                        </van-col>
+                    </van-row>
+              </view>
+              <!--回复模块-->
+              <view class='AnswerFrame' bindtap = 'floor' id = "{{f_ind}}">
+                      <view wx:if="{{c_ind>0 && c_ind<3}}" >
+                                <view wx:if="{{c_item[4]!=''}}" style="margin-top:15rpx;margin-left:10rpx;">
+                                    <van-row >
+                                        <van-col class="visitor1">{{c_item[3]}}</van-col>
+                                        <van-col>
+                                                <view wx:if="{{c_item[8]==1}}">
+                                                  <view class="owner">
+                                                  #楼主
+                                                  </view>
+                                                </view>
+                                        </van-col>
+                                        <van-col class="visitor_answer"> 回复   </van-col>
+                                        <van-col class="visitor1">{{c_item[6]}}</van-col>
+                                        <van-col>
+                                                <view wx:if="{{c_item[9]==1}}">
+                                                  <view class="owner">
+                                                  #楼主
+                                                  </view>
+                                                </view>
+                                        </van-col>
+                                        <van-col class="visitor1">:
+                                        </van-col>
+                                        <van-col class="visitor_comment1">{{c_item[7]}}
+                                        </van-col>
+                                    </van-row>  
+                                  </view>     
+                                  <view wx:else style="margin-top:20rpx;margin-left:10rpx;">
+                                        <van-row >
+                                              <van-col class="visitor1">
+                                              {{c_item[3]}}</van-col>
+                                              <van-col>
+                                                <view wx:if="{{c_item[8]==1}}">
+                                                  <view class="owner">
+                                                  #楼主
+                                                  </view>
+                                                </view>
+                                              </van-col>
+                                              <van-col class="visitor1">: </van-col>
+                                              <van-col class="visitor_comment1">{{c_item[7]}}</van-col>
+                                        </van-row>
+                                  </view>
+                      </view> 
+                      <view wx:if='{{c_ind==3}}' class='TotalAnswer'>
+                      <text >共</text>
+                      <text class='Answer1'>{{floor_comment[f_ind].length-1}}</text>
+                      <text>条回复</text>
+                      </view>
+            </view>
+          </view>
+        </view>
+    </view>
+</scroll-view>
+    <!--隐藏的评论板块-->
+    <view class="bottom" hidden = '{{hidden_chat}}'>
+      <view class="hidden_chat">  
+          <van-col span="20">
+              <view  class="write_chat" >
+              <input bindtap="chat_gun" placeholder="写下你的留言..." bindinput ="write_chat" style="height:39px"  value="{{chat}}"/>
+              </view> 
+          </van-col> 
+          <van-col span="4" class="submit_chat">
+              <button bindtap = 'submit_chat' type="primary" size="mini" style="font-size:30rpx;z-index:4;">发送</button>
+          </van-col>
+      </view>
+    </view>
+
+    <!--评论\私聊\收藏板块--> 
+    <view class="bottom2">
+      <van-tabbar value="{{ comment_collect }}" bind:change="chat_star">
+        <van-tabbar-item><van-icon class="more" name="comment-o"/>留言</van-tabbar-item>
+        <van-tabbar-item><van-icon class="more" name="chat-o"/>私信</van-tabbar-item>
+        <van-tabbar-item><van-icon class="more" name="{{icon[star]}}"/>收藏</van-tabbar-item>
+        <!--更多-->
+        <van-tabbar-item>
+          <van-button bindtap='listenerActionSheet'><van-icon class="more" name="more-o"/>更多
+</van-button>
+
+        <action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" >
+          <action-sheet-item style="padding:0px">
+            <button plain="true" bindtap='listenerActionSheet' open-type="share">
+              <van-row>
+                <van-col><van-icon class="share" name="share"/></van-col>
+                <van-col><view>分享给微信朋友</view></van-col>
+              </van-row>
+            </button>
+          </action-sheet-item>
+
+          <!--举报功能，仅针对“他人发布”-->
+          <action-sheet-item class="this_format"  bindtap="complaint" wx:if = "{{!isme}}">
+            <van-row>
+              <van-col><van-icon style="font-size:21px;" name="warning-o"/></van-col>
+              <van-col><view>举报</view></van-col>
+            </van-row>
+          </action-sheet-item>
+          <!--仅针对“我的发布”，状态设定开始，state代表当前发布状态-->
+          <action-sheet-item class="this_format" wx:if="{{(state==0)&&isme}}" bindtap="change_state">
+          <!--若state=0，则正在发布且有效，可更改状态-->
+            <van-row>
+              <van-col><van-icon style="font-size:21px;" name="certificate"/></van-col>
+              <van-col><view >更改状态</view></van-col>
+            </van-row>
+          </action-sheet-item>
+          <!--若state=1，则发布已过期，可重新发布-->
+          <action-sheet-item class="this_format" wx:if="{{(state==1)&&isme}}" bindtap="republish" >
+            <van-row>
+              <van-col><van-icon style="font-size:21px;" name="upgrade"/></van-col>
+              <van-col><view>重新发布</view></van-col>
+            </van-row>
+          </action-sheet-item>
+          <!--若state=2，则发布已完成-->
+          <!--状态设定结束-->
+
+          <!--删除功能，仅针对“我的发布”-->
+          <action-sheet-item class="this_format" style="color:red" bindtap='delete_product'  wx:if = "{{isme}}">
+            <van-row>
+              <van-col><van-icon style="font-size:21px" name="delete"/></van-col>
+              <van-col><view>删除</view></van-col>
+            </van-row>
+          </action-sheet-item>
+          <action-sheet-cancel>取消</action-sheet-cancel>
+        </action-sheet>
+      </van-tabbar-item>
+    
+      </van-tabbar>
+    </view>
+
+     <!-- 点击举报形成的弹窗 -->
+  <!-- 遮罩层 -->
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <!-- 弹出层 -->
+    <view class="modalDlg" wx:if="{{showModal}}">
+      <!-- 输入框 -->
+      <van-row>
+        <textarea class="page-section" placeholder="请输入举报原因"  bindinput ="write_reason"/>       
+      </van-row>
+      <van-row >
+        <van-col span="12"><view bindtap="cancel" class="ok" hover-class='button-hover'>取消</view></van-col>
+        <van-col span="12"><button size="mini" class="ok" bindtap="assert"  style = "background:{{color}}" disabled='{{disabled}}'>确定</button></van-col>
+      </van-row>
+    </view>
+
+</view>

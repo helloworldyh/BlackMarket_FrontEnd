@@ -1,0 +1,149 @@
+<!--pages/test/test.wxml-->
+<view wx:if = "{{isblack}}" style=" padding-top:200px;width:100%;height:50px;display:flex;flex-direction:column; justify-content:center;align-items: center; font-size:20px;color:white">
+<van-row><image src="../image/weep.gif" style="width:100px;height:100px;"></image></van-row>
+<van-row><navigator open-type="exit" target="miniProgram" hover-class="navigator-hover" style="height:100%;background-color:black;padding:10px;border-radius:10px;" >选择安静地离开~</navigator></van-row>
+</view>
+<view wx:else>
+
+
+  <!--获取权限-->
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取权限</button>
+
+  <!--主页-->
+  <block wx:else>
+    <!--顶部固定-->
+    <view class="top">
+      <!--搜索框-->
+      <van-search value="{{keyword}}" placeholder="请输入关键字" use-action-slot bind:change="keyword">
+        <view slot="action"  bindtap = 'onSearch' style="padding-left:10px;padding-right:10px;background-color:black;border-radius: 15%;color:white;font-size:14px;">搜索</view>   
+      </van-search>
+
+      <van-notice-bar  left-icon="volume-o" text="{{title_text}}"/>
+      <!--全部，发布，求购标题行-->
+      <van-tabs  bind:change = 'all_sell_buy' id = 'van-tabs'>
+        <van-tab title="全部" name="a" ></van-tab>
+        <van-tab title="出售" name="b"></van-tab>
+        <van-tab title="求购" name="c"></van-tab>
+      </van-tabs>
+    </view>
+    <!--message代表信息栏-->
+    <view class='frame'>
+      <!--分割线-->
+      <view class="divLine1"></view>
+
+      <view wx:for = "{{publish_info}}" id='{{index}}' bindtap = 'detail_info'>
+        <view wx:if = "{{publish_info[index]!=undefined}}">
+        <view class="one-message"><!--one-message代表一条信息-->
+
+        <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+
+        <van-row gutter="10"><view class='userinfo-information'>
+
+        <!--userinfo-avatar代表头像-->
+        <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+
+        <van-col span="16">
+          <!--serinfo-nickname代表昵称-->
+          <van-row>
+            <van-col><view class='userinfo-nickname'>{{item.nickname}}</view></van-col>
+            <van-col>
+              <view wx:if="{{item.rank==1}}" class="the_lv">
+                <image mode="aspectFit" src="../image/LV1.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==2}}">
+                <image mode="aspectFit" src="../image/LV2.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==3}}" class="the_lv">
+                <image mode="aspectFit" src="../image/LV3.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==4}}">
+                <image mode="aspectFit" src="../image/LV4.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+              <view wx:if="{{item.rank==5}}">
+                <image mode="aspectFit" src="../image/LV5.png" style="width:90rpx;height:35rpx;"></image>
+              </view>
+            </van-col>
+          </van-row>
+          <!--userinfo-span_time代表发布时间-->
+          <van-row><view class='userinfo-span_time'>{{item.span_time}}</view></van-row>
+        </van-col>
+
+        <!--userinfo-class代表出售or求购-->   
+        <van-col span="5">
+          <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
+            <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+          </view>
+          <view class='userinfo-class' wx:if="{{item.buy_sell=='求购'}}">
+            <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
+          </view>
+        </van-col>
+      </view></van-row>
+
+      <van-row gutter="10">
+      
+        <!--************左边是文字板块************--> 
+        <van-col span="16">
+
+        <!--userinfo-description代表发布的标题--> 
+          <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
+          
+        <!--desc代表发布的详情--> 
+          <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+
+        <!--userinfo-price代表发布的价格-->
+          <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>
+
+      
+        <!--message-info代表评论数，收藏量，浏览量的板块-->
+        <van-row gutter="10" style="padding-top:10px">
+        
+          <van-col span="8">
+            <!--评论图标-->
+            <van-col><van-icon style="font-size:35rpx" name="comment-o"/></van-col>
+            <!--评论数-->
+            <van-col><view class='the_number'>{{item.comment_ids}}</view></van-col>
+          </van-col>
+
+          <van-col span="8">
+            <!--收藏图标-->
+            <van-col><van-icon style="font-size:35rpx" name="star-o"/></van-col>
+            <!--收藏数-->
+            <van-col><view class='the_number'>{{item.star_ids}}</view></van-col>
+          </van-col>
+          
+          <van-col span="8">
+            <!--浏览图标-->
+            <van-col><van-icon style="font-size:35rpx" name="eye-o"/></van-col>
+            <!--浏览量-->
+            <van-col><view class='the_number'>{{item.page_view}}</view></van-col>
+          </van-col>     
+        </van-row>
+
+      </van-col>
+
+      <!--************右边是图片板块************--> 
+      <van-col span="8">
+      <view wx:if="{{item.imgUrl.length>0}}">
+        <view class='userinfo-picture'><image style="width:220rpx;height:220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image></view>
+      </view>
+      </van-col>
+
+    </van-row>
+
+        </view>
+
+        <!--分割线-->
+        <view class="divLine1"></view>
+      </view>
+      </view>
+    </view>
+
+
+    <van-tabbar value="{{ publish_info_my }}" bind:change="publish_purchase">
+      <van-tabbar-item icon="home-o" >发布</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" info="{{info_unreadnum}}">消息</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" info="">我的</van-tabbar-item>
+    </van-tabbar>
+
+  </block>
+</view>

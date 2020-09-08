@@ -1,0 +1,187 @@
+/* pages/floor_comment/floor_comment.wxss */
+
+
+/* pages/Details/Details.wxss */
+
+/*headline为本条发布信息的标题行*/
+.headline{
+  padding:10px;
+  font-size:40rpx;
+  font-family: 'Patrick Hand SC';
+  src: "BASE64";
+  font-weight:  bold;
+  font-style: normal;
+  color:rgb(24, 23, 23);
+}
+
+.owner{
+  padding-bottom:10rpx;
+  /* padding-left:15rpx;
+  padding-right:10rpx; */
+  color:rgb(68, 184, 33);
+  font-size:30rpx;
+  /* background-color:rgba(207, 177, 8, 0.856);  */
+}
+/*product_info代表发布的信息*/
+.product_info{
+  padding:10px;
+}
+
+/*发布者的头像*/
+.TypeImage{
+    border-radius: 120px;
+    width:50px;
+    height:50px;
+}
+
+/*发布者昵称*/
+.nickname{
+  font-size:35rpx;
+  color:rgb(243, 199, 54);
+}
+
+/*信息发布时间*/
+.time{
+  font-size:30rpx;
+  color:darkgrey;
+}
+
+/*浏览量*/
+.pageview{
+  color:darkcyan;
+  font-size:30rpx;
+}
+
+/*这条信息的发布类型*/
+.user_class{
+  padding:10px;
+  color:darkgrey;
+  font-size:30rpx;
+}
+
+/*发布信息的详情描述*/
+.detail_message{
+  padding:10px;
+  font-size:35rpx;
+  text-align:justify;
+}
+
+/*图片*/
+.userinfo-picture{
+  padding:10px;
+  width:400rpx;
+  height:500rpx;
+}
+
+/*图片与评论的分割线样式*/
+.divLine{
+ background: #E0E3DA;
+ height: 30rpx;
+}
+
+/*每一条评论*/
+.message{
+  padding-bottom: 70rpx;
+}
+
+/*评论板块的标题行*/
+.comment_headline{
+  background-color: white;
+ color:rgb(90, 78, 77);
+  font-size:35rpx;
+   padding-left:10rpx;
+  padding-right:10rpx;
+}
+
+/*内部分割线样式*/
+.divLine1{ 
+  background: #E0E3DA;
+  height: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/*评论者信息*/
+.visitor{
+  color:rgb(48, 74, 224);
+  font-size:30rpx;
+}
+
+/*评论者的评论*/
+.visitor_comment{ 
+  background-color: white;
+  color:black;
+  font-size:30rpx;
+}
+
+/*回复*/
+.visitor_answer{
+  color:rgb(10, 131, 64);
+  font-size:30rpx;
+}
+
+/*几楼*/
+.visitor_layer{
+  padding-left:10rpx;
+  padding-right:10rpx;
+  color:white;
+  font-size:25rpx;
+  background-color:#E0E3DA; 
+}
+
+/*几楼*/
+.visitor_time{
+  color:rgb(167, 168, 165);
+  font-size:27rpx;  
+}
+
+
+/*隐藏的评论模块*/
+.bottom{
+  width:100%;
+  position:fixed;
+  height:100rpx;
+  bottom:0px;
+  z-index: 2;
+  background-color:rgb(241, 243, 237); 
+}
+
+.hidden_chat{
+  padding:10px;
+  padding-bottom:70rpx;
+  font-size:30rpx;
+}
+
+.write_chat{
+  z-index: 3;
+}
+
+.submit_chat{
+  z-index:4;
+}
+
+
+.demo1{
+  padding-top: 20rpx;
+}
+
+/*评论者的头像*/
+.TypeImage1{
+    border-radius: 120px;
+    width:30px;
+    height:30px;
+}
+
+
+
+.bottom2{
+  width:100%;
+  position:fixed;
+  bottom:0px;
+  z-index: 3;
+  background-color:white;
+}
+
+.user-recall-info{
+  padding:10px;
+}

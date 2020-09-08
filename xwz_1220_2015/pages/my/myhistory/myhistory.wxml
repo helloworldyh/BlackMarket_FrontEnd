@@ -1,0 +1,73 @@
+
+<!--userinfo-border是显示所有消息的外框-->
+<view class='userinfo-border'>
+<van-row gutter="10"></van-row>
+<view wx:for = "{{collect}}" id='{{index}}' bindtap = 'detail_info' class='message'>
+<!--message代表一条信息-->
+
+  <!--userinfo-information代表头像，昵称，发布时间，信息类型-->
+  <van-row gutter="10"><view class='userinfo-information'>
+
+  <!--userinfo-avatar代表头像-->
+    <van-col span="3"><image src = "{{item.image}}" class = 'userinfo-avatar' mode = 'cover'></image></van-col>
+
+    <!--serinfo-nickname代表昵称-->
+    <van-col span="6"><view class='userinfo-nickname'>{{item.nickname}}</view></van-col>
+
+    <!--userinfo-span_time代表发布时间-->
+    <van-col  offset="6" span="5"><view class='userinfo-span_time'>{{item.span_time}}</view></van-col>
+
+
+
+
+    <!--userinfo-class代表出售or求购-->   
+    <van-col  span="4"><view class='userinfo-class'>{{item.buy_sell}}</view></van-col>
+  </view></van-row>
+
+  <van-row gutter="10">
+  
+    <!--************左边是文字板块************--> 
+    <van-col span="16">
+    
+    <!--userinfo-description代表发布的标题--> 
+      <van-row gutter="10"><van-col span="24"><view class='userinfo-description'>{{item.title}}</view></van-col></van-row>
+
+      
+    <!--desc代表发布的详情--> 
+      <van-row gutter="10"><van-col span="24"><view class='desc'>{{item.description}}</view></van-col></van-row>
+
+    <!--userinfo-price代表发布的价格-->
+      <van-row gutter="10"><van-col span="24"><view class='userinfo-price'>¥{{item.price}}</view></van-col></van-row>
+
+     
+      <!--message-info代表评论数，收藏量，浏览量的板块-->
+       <van-row gutter="10"><van-col span="24"><view class='message-info'>
+       <!--评论图标-->
+        <van-col span="3"><van-icon name="chat-o"/></van-col>
+        <!--评论数-->
+        <van-col span="3"><view class='userinfo-comment'>{{item.comment_ids}} </view></van-col>
+        <!--收藏图标-->
+        <van-col offset="3" span="3"><van-icon name="like-o"/></van-col>
+        <!--收藏数-->
+        <van-col span="3"><view class='userinfo-want'>{{item.star_ids}}</view></van-col>
+        <!--浏览图标-->
+        <van-col offset="3" span="3"><van-icon name="eye-o"/></van-col>
+        <!--浏览量-->
+        <van-col span="3"><view class='userinfo-see'>{{item.page_view}}</view></van-col>        
+      </view></van-col></van-row>
+
+      </van-col>
+
+    <!--************右边是图片板块************--> 
+    <van-col span="8">  
+      <image src = "{{item.imgUrl}}"mode='aspectFill' class = 'userinfo-picture'></image>
+    </van-col>
+
+  </van-row>
+
+
+</view>
+</view>
+
+
+

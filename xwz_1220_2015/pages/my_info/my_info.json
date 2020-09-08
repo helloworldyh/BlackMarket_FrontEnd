@@ -1,0 +1,14 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-row": "../miniprogram_npm/vant-weapp/row",
+    "van-col": "../miniprogram_npm/vant-weapp/col",
+    "van-tag": "../miniprogram_npm/vant-weapp/tag",
+    "van-tab": "../miniprogram_npm/vant-weapp/tab",
+    "van-tabs": "../miniprogram_npm/vant-weapp/tabs",
+    "van-tabbar": "/miniprogram_npm/vant-weapp/tabbar/index",
+    "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+  }
+}

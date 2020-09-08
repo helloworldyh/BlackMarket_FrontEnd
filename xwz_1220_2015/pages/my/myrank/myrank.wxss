@@ -1,0 +1,93 @@
+/* pages/my/myrank/myrank.wxss */
+.my-credit{
+  width:100%;
+  height: 200rpx;
+}
+.format{
+  font-size: 32rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.my_divLine{
+ background:rgba(180, 178, 178, 0.253);
+ width: 100%;
+ height: 10px;
+}
+.my_divLine1{
+ background:rgba(180, 178, 178, 0.253);
+ width: 100%;
+ height: 1px;
+}
+/* 表格代码   */
+.table{
+  border:1px solid #dadada;
+  border-right:0;
+  border-bottom: 0;
+  width: 98%;
+  margin-left: 1%;
+}
+.tr{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+.th,.td{
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+}
+.th1,.th2,.td1,.td2{
+  width: 60%;
+}
+.th{
+  font-weight: 800;
+  background-color: black;
+  font-size: 28rpx;
+  color: white;
+}
+.td{
+  font-size: 25rpx;
+}
+.rank-1{
+  border-radius: 2px;
+  margin-left: 5px;
+  width:120rpx;
+  height:30rpx;
+  background-color:#e2ab53;
+  padding-top: 2px;
+}
+.rank-2{
+  border-radius: 2px;
+  margin-left: 5px;
+  width:120rpx;
+  height:30rpx;
+  background-color:#82529d;
+  padding-top: 2px;
+}
+.rank-3{
+  border-radius: 2px;
+  margin-left: 5px;
+  width:120rpx;
+  height:30rpx;
+  background-color:#3f81c1;
+  padding-top: 2px;
+}
+.rank-4{
+  border-radius: 2px;
+  margin-left: 5px;
+  width:120rpx;
+  height:30rpx;
+  background-color:#7cba59;
+  padding-top: 2px;
+}
+.rank-5{
+  border-radius: 2px;
+  margin-left: 5px;
+  width:120rpx;
+  height:30rpx;
+  background-color:#8a8a8a;
+  padding-top: 2px;
+}

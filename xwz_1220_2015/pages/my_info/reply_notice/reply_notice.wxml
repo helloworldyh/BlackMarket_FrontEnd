@@ -1,0 +1,18 @@
+<!--pages/my_info/reply_notice/reply_notice.wxml-->
+<view wx:for="{{notices['user']}}" id="{{index}}" bindtap = 'detail_info'  bindlongtap="delete_notice" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
+  <view class="message">
+    <van-row>
+      <van-col><view class="info-from" style="color:blue;">@{{item.nickname1}}</view></van-col>
+      <van-col><view class="info-from"> 回复了你</view></van-col>
+      <van-col class="time"><view>{{item.time}}</view></van-col>
+    </van-row>
+    <van-row><view class="content">{{item.text}}</view></van-row>    
+    <van-row><view class="original">{{item.title}}</view></van-row>
+  </view>
+  <view class="divLine"></view>
+</view>
+
+<view wx:if="{{(notices['user'].length==0)&&ready}}" style="margin-top:200px;display:flex;flex-direction:row;justify-content:center;">
+  <image src="../../image/kong.gif" style="width:40px;height:40px;"></image>
+  <view style="margin-left:5px;display:flex;align-items:center;">您没有收到任何回复哦~</view>     
+</view>

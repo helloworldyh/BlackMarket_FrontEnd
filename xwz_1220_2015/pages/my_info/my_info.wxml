@@ -1,0 +1,64 @@
+<!--pages/my_info/my_info.wxml-->
+
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <!--私信页面-->
+  <van-tab title="私信">
+    <view wx:for = "{{myinfos}}"  bindlongtap="delete_news" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" id = "{{index}}">
+    <van-row>
+      <view class='userinfo-information' id = "{{index}}" bindtap="gotoprivatechat">
+        <van-col span="3"><image src = "{{item.image}}" class ='userinfo-avatar' mode = 'cover'></image></van-col>
+        <van-col span="21">
+          <van-row>
+            <van-col span="7"><view class='userinfo-nickname'>{{item.nickname}}</view></van-col>
+            <van-col span="17"><view class='userinfo-span_time'>{{item.timestamp}}</view></van-col>
+          </van-row>
+          <van-row>
+            <van-col span="21"><view class="userinfo-message">{{item.message}}</view></van-col>
+            <view wx:if="{{item.unread}}">
+              <van-col span="3"><van-tag round type="danger" class="userinfo-unread">{{item.unread}}</van-tag></van-col>
+            </view>
+          </van-row>
+        </van-col>           
+
+      </view>
+    </van-row>
+    <!--分割线-->
+    <view class="divLine1"></view>    
+  </view>
+
+  <view wx:if="{{(myinfos.length==0)&&ready}}" style="margin-top:200px;display:flex;flex-direction:row;justify-content:center;">
+  <image src="../image/kong.gif" style="width:40px;height:40px;"></image>
+  <view style="margin-left:5px;display:flex;align-items:center;">您没有收到任何私信哦~</view>     
+  </view>
+  
+  </van-tab>
+
+
+
+  <!--消息通知页面-->
+  <van-tab title="通知" dot="{{notices['count'][0]+notices['count'][1]}}">
+    <view class="notice" bindtap = 'system_notice'>
+      <van-row>
+        <van-col><image src="../image/system_notice.png" class="notice_image"></image></van-col>
+        <van-col><view class="notice_text">系统通知</view></van-col>
+        <view wx:if="{{notices['count'][0]}}">
+          <van-col  class="info-num"><van-tag round type="danger">NEW</van-tag></van-col>
+        </view>
+      </van-row>
+    </view>
+    <!--分割线-->
+      <view class="divLine2"></view>
+    <view class="notice" bindtap = 'reply_notice'>
+      <van-row>
+        <van-col><image src="../image/reply_notice.png" class="notice_image"></image></van-col>
+        <van-col><view class="notice_text">回复</view></van-col>
+        <view wx:if="{{notices['count'][1]}}">
+          <van-col  class="info-num"><van-tag round type="danger">NEW</van-tag></van-col>
+        </view>
+      </van-row> 
+    </view>
+    <!--分割线-->
+    <view class="divLine2"></view>
+  </van-tab>
+
+</van-tabs>

@@ -1,0 +1,32 @@
+/* pages/my_info/system_notice/system_notice'.wxss */
+
+.message{
+  padding:15px;
+  width:100%;
+}
+
+.info-from{
+  font-size:30rpx;
+  color:black;
+  font-weight: bolder;
+}
+
+.content{
+  padding-top:10rpx;
+  font-size:30rpx;
+}
+
+.time{
+  font-size:30rpx;
+  margin:auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  color:grey;
+  margin-right:20px;
+}
+
+.divLine{ 
+  background: rgb(222, 222, 222);
+  height:1px;
+}

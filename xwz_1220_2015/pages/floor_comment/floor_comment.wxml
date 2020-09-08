@@ -1,0 +1,121 @@
+<!--pages/floor_comment/floor_comment.wxml-->
+
+<view class="message">
+  <view wx:for = "{{floor_comment}}"  wx:for-index="f_ind" wx:for-item="f_item" >
+          <view bindtap = 'personal_info'></view>
+          
+          <view wx:if="{{f_item[4]}}">
+             <view >
+                <view class="user-recall-info"> 
+                  <van-row bindtap = "to_comment_info" id = "{{f_ind}}"> 
+                    <van-col span="3"><image class='TypeImage1' src='{{f_item[2]}}'></image></van-col>
+                    <van-col span="21">
+                      <van-row>
+                        <van-col class="visitor">{{f_item[3]}}</van-col>
+                           <van-col>
+                            <view wx:if="{{f_item[8]==1}}" class="owner">
+                              <van-tag round type="success">
+                              楼主
+                              </van-tag>
+                            </view>
+                        </van-col>
+                        <van-col offset="1" class="visitor_answer"> 回复 </van-col>
+                        <van-col offset="1" class="visitor">{{f_item[6]}}</van-col>
+                          <van-col>
+                             <view wx:if="{{f_item[9]==1}}" class="owner">
+                              <van-tag round type="success">
+                              楼主
+                              </van-tag>
+                            </view>
+                        </van-col>
+                      </van-row>
+                      <van-row>
+                        <van-col class="visitor_time">{{f_item[10]}}</van-col> 
+                      </van-row>
+                    </van-col>
+                  </van-row>
+                  <van-row  bindtap = 'reply_delete' id = "{{f_ind}}">
+                    <van-col offset="3"><view style='margin-top:25rpx;margin-bottom:5rpx;' class="visitor_comment">{{f_item[7]}}</view></van-col>
+                  </van-row>
+                  </view>
+                  <van-row><view class="divLine1"></view></van-row>
+                 
+               </view>
+           </view>
+      <view wx:elif="{{f_ind>0}}"  class="visitor_comment">
+        <view class="user-recall-info"> 
+            <van-row bindtap = "to_comment_info" id = "{{f_ind}}">
+              <van-col span="3"><image class='TypeImage1' src='{{f_item[2]}}'></image></van-col>
+              <van-col span="21">
+                  <van-row>
+                    <van-col class="visitor">{{f_item[3]}}
+                    </van-col>
+                    <van-col>
+                             <view wx:if="{{f_item[8]==1}}" class="owner">
+                              <van-tag round type="success">
+                              楼主
+                              </van-tag>
+                            </view>
+                    </van-col>
+                  </van-row>
+                  <van-row>
+                    <van-col class="visitor_time">{{f_item[10]}}</van-col>                  
+                  </van-row>
+              </van-col>
+            </van-row>
+            <van-row  bindtap = 'reply_delete' id = "{{f_ind}}">
+              <van-col offset="3">
+                  <view style='margin-top:25rpx;margin-bottom:5rpx;' class="visitor_comment">
+                  {{f_item[7]}}
+                  </view>
+              </van-col>
+            </van-row> 
+        </view>
+       <view >
+          <!--分割线-->
+          <view class="divLine1"></view>
+       </view>
+       </view>
+      <view wx:else id = "{{f_ind}}" class="visitor_comment">
+        <view class="user-recall-info"> 
+        <van-row bindtap = "to_comment_info" id = "{{f_ind}}">
+          <van-col span="3"><image class='TypeImage1' src='{{f_item[2]}}'></image></van-col>
+          <van-col span="21">
+            <van-row><van-col class="visitor">{{f_item[3]}}</van-col></van-row>
+            <van-row>
+              <van-col class="visitor_time">{{f_item[10]}}</van-col>                  
+              <van-col><view class="visitor_layer">{{f_ind_floor[f_ind]}}</view></van-col>
+            </van-row>
+          </van-col>
+        </van-row>
+        <van-row><van-col offset="3"><view style='margin-top:25rpx;margin-bottom:10rpx;' class="visitor_comment">{{f_item[7]}}</view></van-col></van-row> 
+        </view>
+        <view class="divLine"></view>
+        <view class="comment_headline">
+            <van-row>
+              <van-col span="7"><text>{{floor_comment.length-1}}条回复</text></van-col>    
+              <!-- <van-col offset="11" span="1"><van-icon name="tosend"/></van-col>      
+              <van-col span="5"><text>默认排序</text></van-col> -->
+            </van-row>
+        </view>
+        <view class="divLine1"></view>
+    
+      </view>   
+  </view>
+</view>
+
+
+
+ <!--隐藏的评论板块-->
+    <view class="bottom">
+      <view class="hidden_chat">  
+          <van-col span="20">
+              <view hidden = '{{hidden_chat}}' class="write_chat">
+                <input  placeholder='{{placeholder}}' value = "{{chat}}"  bindinput ="write_chat" style="height:27px"/>
+              </view> 
+          </van-col> 
+          <van-col span="4" class="submit_chat">
+              <button bindtap = 'submit_chat' type="primary" size="mini" style="font-size:30rpx;z-index:4;">发送</button>
+          </van-col>
+      </view>
+    </view>

@@ -1,0 +1,91 @@
+<!--index.wxml-->
+
+  <van-row gutter="10" bindtap='my_information'>
+    <van-col span="6"> 
+      <image src = "{{my_img}}" class='my-avatar' mode='cover'></image>
+    </van-col>
+    <van-col span="10">
+      <van-row><view class="my-nickname">{{nickName}}</view></van-row>
+      <view class="format" wx:if="{{rank==1}}" style="color:#8a8a8a;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用极差 Lv.1</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==2}}" style="color:#7cba59;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用较差 Lv.2</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==3}}" style="color:#3f81c1;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用一般 Lv.3</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==4}}" style="color:#82529d;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用较好 Lv.4</view>
+        </van-col></van-row>
+      </view>
+      <view class="format" wx:if="{{rank==5}}" style="color:#e2ab53;">
+        <van-row><van-col span="3">
+          <view class="my_diamond"><van-icon name="diamond"/></view>
+        </van-col>
+        <van-col span="21">
+          <view class="my_rank">信用极好 Lv.5</view>
+        </van-col></van-row>
+      </view>
+    </van-col>
+    <van-col span="8">
+      <view class="my_information"><van-icon name="arrow" /></view>
+    </van-col>
+  </van-row>
+
+<!--分割线-->
+<view class="my_divLine2"></view>
+
+<!--我的收藏-->
+<van-cell value="{{nums_colpubcom[0]}}" bindtap='my_collect' icon="star-o" is-link>
+  <view slot="title">
+    <view class="van-cell-collect">我的收藏</view>
+  </view>
+</van-cell>
+
+<!--分割线-->
+<!--<view class="my_divLine2"></view>-->
+<!--我的发布-->
+<van-cell value="{{nums_colpubcom[1]}}" bindtap='my_publish' icon="shop-collect-o" is-link>
+  <view slot="title">
+    <view class="van-cell-publish">我的发布</view>
+  </view>
+</van-cell>
+
+<!--我的评论-->
+<van-cell value="{{nums_colpubcom[2]}}" bindtap='my_comment' icon="comment-o" is-link>
+  <view slot="title">
+    <view class="van-cell-comment">我的回复</view>
+  </view>
+</van-cell>
+
+
+<!--分割线-->
+<!--<view class="my_divLine3"></view>-->
+<!--联系我们-->
+<van-cell bindtap='get_help' icon="smile-comment-o" is-link>
+  <view slot="title">
+    <view class="van-cell-history">联系我们</view>
+  </view>
+</van-cell>
+<!--分割线-->
+<!--<view class="my_divLine4"></view>-->
